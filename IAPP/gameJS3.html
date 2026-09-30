@@ -12,7 +12,6 @@
 
     
     <script src="darkmode.js" defer></script>
-    <script type="module" src="auth-nav.js"></script>
 </head>
 <body class="darkMode">
 
@@ -77,14 +76,6 @@
     <div id="gameBoard"></div>
     <h2 id="message"></h2>
 
-    <div id="leaderboardSection" style="max-width: 500px; margin: 30px auto; padding: 20px; background: rgba(255,255,255,0.9); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #111;">
-        <h3 style="margin-bottom: 12px; color: #111e13;">🏆 Memory Match Hall of Fame (Firestore)</h3>
-        <p id="authLeaderboardNote" style="font-size: 13px; color: #666; margin-bottom: 10px;">Sign in with Google to record your scores to the club leaderboard!</p>
-        <ol id="leaderboardList" style="text-align: left; padding-left: 25px; line-height: 1.8; font-weight: 500;">
-            <li>Loading top scores...</li>
-        </ol>
-    </div>
-
     <footer>
         <h3><u>Contact</u></h3>
 
@@ -115,6 +106,6 @@
         </p>
     </footer>
 
-    <script type="module" src="game.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>

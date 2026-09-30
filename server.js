@@ -58,14 +58,6 @@ app.use(serveCaseInsensitive(iappDir));
 app.use(express.static(iappDir));
 app.use('/IAPP', express.static(iappDir));
 
-// Serve Firebase configuration
-app.get('/firebase-applet-config.json', (req, res) => {
-  res.sendFile(path.join(__dirname, 'firebase-applet-config.json'));
-});
-app.get('/IAPP/firebase-applet-config.json', (req, res) => {
-  res.sendFile(path.join(__dirname, 'firebase-applet-config.json'));
-});
-
 // Landing page route
 app.get(['/', '/index.html'], (req, res) => {
   res.sendFile(path.join(iappDir, 'UnitedClub.html'));

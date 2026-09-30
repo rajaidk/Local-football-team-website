@@ -12,7 +12,6 @@
 
     
     <script src="darkmode.js" defer></script>
-    <script type="module" src="auth-nav.js"></script>
 </head>
 <body class="darkMode">
 
@@ -165,22 +164,10 @@
         </p>
     </footer>
 
-   <script type="module">
-import { auth, submitEnquiry, loginWithGoogle } from './firebase-service.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js';
-
+   <script>
 const form = document.getElementById("contactForm");
 
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        const nameInput = document.getElementById("name");
-        const emailInput = document.getElementById("email");
-        if (nameInput && !nameInput.value && user.displayName) nameInput.value = user.displayName;
-        if (emailInput && !emailInput.value && user.email) emailInput.value = user.email;
-    }
-});
-
-form.addEventListener("submit", async function(event){
+form.addEventListener("submit", function(event){
     event.preventDefault();
 
     let name = document.getElementById("name").value;
@@ -229,46 +216,10 @@ form.addEventListener("submit", async function(event){
         valid = false;
     }
 
-    if (!valid) return;
-
-    if (!auth.currentUser) {
-        const doLogin = confirm("To save and track your enquiry securely with your account, please sign in with Google. Would you like to sign in now?");
-        if (doLogin) {
-            try {
-                await loginWithGoogle();
-            } catch (err) {
-                return;
-            }
-        } else {
-            return;
-        }
-    }
-
-    try {
-        const submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Sending...";
-        }
-
-        await submitEnquiry({
-            purpose: enquiry,
-            name: name.trim(),
-            email: email.trim(),
-            message: message.trim()
-        });
-
-        alert("Enquiry submitted successfully and saved to our database! Our team will contact you shortly.");
+    if(valid)
+    {
+        alert("Enquiry submitted successfully! Our team will contact you shortly.");
         form.reset();
-    } catch (err) {
-        console.error(err);
-        alert("Failed to submit enquiry: " + err.message);
-    } finally {
-        const submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Submit";
-        }
     }
 });
 </script>

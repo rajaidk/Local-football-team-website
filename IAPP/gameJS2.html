@@ -12,7 +12,6 @@
 
     
     <script src="darkmode.js" defer></script>
-    <script type="module" src="auth-nav.js"></script>
 </head>
 <body class="darkMode">
 
@@ -91,45 +90,13 @@
         Attempts:
         <span id="attempts">0</span>
     </p>
-
-    <div id="guessingLeaderboard" style="max-width: 450px; margin: 25px auto; padding: 15px; background: rgba(255,255,255,0.85); border-radius: 10px; color: #111;">
-        <h4>🏆 Best Guessers (Fewest Attempts)</h4>
-        <ul id="guessLeaderboardList" style="list-style-type: none; padding: 0; margin-top: 10px; font-size: 14px;">
-            <li>Loading scores...</li>
-        </ul>
-    </div>
 </div>
 
-<script type="module">
-    import { auth, recordGameScore, getTopGameScores } from './firebase-service.js';
-
+<script>
     let answer = 117;
     let attempts = 0;
 
-    async function loadGuessLeaderboard() {
-        const list = document.getElementById("guessLeaderboardList");
-        if (!list) return;
-
-        try {
-            const scores = await getTopGameScores('guessing', 5);
-            if (scores && scores.length > 0) {
-                // sort ascending by attempts
-                scores.sort((a, b) => a.attempts - b.attempts);
-                list.innerHTML = scores.map(s => `
-                    <li style="padding: 4px 0; border-bottom: 1px solid #eee;">
-                        <strong>${s.displayName}</strong>: ${s.attempts} attempts
-                    </li>
-                `).join('');
-            } else {
-                list.innerHTML = `<li>No guesses recorded yet. Sign in and guess!</li>`;
-            }
-        } catch (err) {
-            console.error(err);
-            list.innerHTML = `<li>Sign in with Google to record your attempts!</li>`;
-        }
-    }
-
-    async function checkGuess() {
+    function checkGuess() {
 
         let input = document.getElementById("guess").value;
 
@@ -153,22 +120,6 @@
         if (guess === answer) {
             document.getElementById("message").textContent =
                 "🎉 Correct! The longest match played is 117 minutes. It was the match of England vs Iran at the 2022 FIFA World Cup.";
-            
-            if (auth.currentUser) {
-                try {
-                    await recordGameScore({
-                        gameType: 'guessing',
-                        score: Math.max(10, 100 - (attempts * 10)),
-                        attempts: attempts,
-                        timeRemaining: 0
-                    });
-                    await loadGuessLeaderboard();
-                } catch (e) {
-                    console.error("Score saving error:", e);
-                }
-            } else {
-                document.getElementById("message").textContent += " (Sign in with Google to record your score!)";
-            }
         }
         else if (guess < answer) {
             document.getElementById("message").textContent =
@@ -181,6 +132,7 @@
     }
 
     function restartGame() {
+   
         answer = 117;
         attempts = 0;
 
@@ -189,17 +141,11 @@
         document.getElementById("guess").value = "";
     }
 
-    window.checkGuess = checkGuess;
-    window.restartGame = restartGame;
-
     document.getElementById("guess").addEventListener("keypress", function(e) {
         if (e.key === "Enter") {
             checkGuess();
         }
     });
-
-    loadGuessLeaderboard();
-    window.addEventListener('clubUserAuthChanged', loadGuessLeaderboard);
 </script>
 <footer>
     <h3><u>Contact</u></h3>
