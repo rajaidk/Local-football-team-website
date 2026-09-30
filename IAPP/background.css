@@ -1,0 +1,107 @@
+body{
+    background: url('Image/FootballClubBG.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+ 
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+@font-face {
+    font-family: "Berlin Sans FB Demi";
+    src: url(fonts/BRLNSDB.TTF);
+}
+
+a{
+    text-decoration: none;
+}
+
+h1{
+    margin-top: 20px;
+    text-align: center;
+    font-family: "Berlin Sans FB Demi";
+    color: white;
+    font-size: xx-large;
+}
+
+.center-container {
+    text-align: center;
+}
+
+.club-icon {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: auto;
+}
+
+.center-container h1 {
+    margin-top: 10px;
+}
+
+
+
+p{ 
+    text-align: center;
+    font-family: "Berlin Sans FB Demi";
+    color: white;
+    font-size: large;
+}
+
+
+
+.button-container{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    color: white;
+    background-color: #607c43;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+.btn:hover{
+    background-color: #fca243;
+}
+
+
+.intro-text {
+    display: block;
+    width: 70%;
+    margin: 30px auto;
+    padding: 25px;
+
+    border: 3px solid white;
+    border-radius: 15px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    box-shadow: 0 0 5px white;
+
+    font-family: "Berlin Sans FB Demi";
+    color: white;
+    font-size: large;
+    line-height: 1.6;
+}
+
+
+.intro-text p {
+    margin: 12px;
+    text-align: center;
+    color: white;
+}
+.strokeme {
+  color: white;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}

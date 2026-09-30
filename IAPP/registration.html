@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football club</title>
+    <link rel="icon" type="image/png" href="Image/clubicon.png">
+    <link rel="stylesheet" href="darkmode.css">
+    <link rel="stylesheet" href="registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    
+    <script src="darkmode.js" defer></script>
+</head>
+<body class="darkMode">
+
+    <header>
+    <div class="club-header">
+        <a href="UnitedClub.html">
+    <img src="Image/clubicon.png" alt="Club Logo" width="80" height="65">
+</a>
+        <img src="Image/clubname.png" alt="Club Name" width="300" height="50">
+    </div>
+    <hr>
+</header>
+
+   <nav>
+    <a href="home.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="rules.html">Rules</a> |
+    <a href="equipment.html">Equipment</a> |
+    <a href="classes.html">Classes</a> |
+
+       <div class="dropdown">
+        <button class="dropbtn">Club Updates</button> |
+        <div class="dropdown-content">
+            <a href="news.html">News</a>
+            <a href="events.html">Events</a> 
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Contact Us</button> |
+        <div class="dropdown-content">
+            <a href="contact.html">Enquiry</a>
+            <a href="feedback.html">Feedback</a> 
+        </div>
+    </div>
+
+       <div class="dropdown">
+        <button class="dropbtn">Games</button> |
+        <div class="dropdown-content">
+            <a href="gameJS.html">Motivation Quotes</a>
+            <a href="gameJS2.html">Quessing Game</a> 
+            <a href="gameJS3.html">Memory Game</a> 
+        </div>
+    </div>
+    
+    <a href="registration.html">Join Us Today!!</a>
+
+    <a href="#" id="themeBtn">🌙Dark Mode</a>
+</nav>
+<body>
+
+    <div class="container">
+        <main class="content"> 
+            
+            <section class="image-container">
+                <img src="Image/joinUs.jpg" alt="A man resting his feet on a football">
+            </section>
+            
+            <section class="form-container">
+                <h2>APU United Football Club Membership Registration</h2>
+                <p>Fill out the details below to apply for club membership. Our team will review your application and contact you within 2 business days.</p>
+                <hr>
+                <br>
+                <form action="#" method="POST" onsubmit="alert('Thanks for registering, we will contact you as soon as possible!');">
+                    
+                    <fieldset class="registrationDetails"> 
+                        <legend class="fieldsetTitle">Personal Details</legend>
+                        <p>
+                            <label for="fullName">Full Name:</label><br>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Apple Pie">
+                        </p>
+                        <p>
+                            <label for="dob">Date of Birth:</label><br>
+                            <input type="date" id="dob" name="dob" required>
+                        </p>
+                        <p>
+                            <label>Gender:</label><br>
+                            <input type="radio" id="male" name="gender" value="male" required> 
+                            <label for="male">Male</label>
+                            
+                            <input type="radio" id="female" name="gender" value="female"> 
+                            <label for="female">Female</label>
+                        </p>    
+                    </fieldset>
+
+                    <fieldset class="registrationDetails">
+                        <legend class="fieldsetTitle">Contact Information</legend>
+                        <p>
+                            <label for="email">Email Address:</label><br>
+                            <input type="email" id="email" name="email" required placeholder="apple@apu.edu.my">
+                        </p>
+                        <p>    
+                            <label for="emergencyContact">Emergency Contact Person & Phone:</label><br> 
+                            <input type="text" id="emergencyContact" name="emergencyContact" required placeholder="(Mother) – 012345678">
+                        </p> 
+                    </fieldset>
+
+                    <fieldset class="registrationDetails">
+                        <legend class="fieldsetTitle">Player Profile</legend>
+                        <p>
+                            <label for="footballLevel">Current Football Ability:</label><br> 
+                            <select id="footballLevel" name="footballLevel" required>
+                                <option value="">-- Please Select Your Level --</option>
+                                <option value="beginner">Beginner (Brand new to football)</option>
+                                <option value="intermediate">Intermediate (Casual / Pick-up games)</option> 
+                                <option value="advanced">Advanced (Experienced amateur player)</option>
+                                <option value="competitive">Competitive (Looking to join league squad)</option> 
+                            </select>
+                        </p>
+                        <p>
+                            <label for="programInterest">Program of Interest:</label><br> 
+                            <select id="programInterest" name="programInterest" required> 
+                                <option value="">-- Choose a Program --</option>
+                                <option value="fundamentals">Fundamentals Training (Ages 5+ & Adults)</option> 
+                                <option value="competitiveTeam">Competitive Squad (Ages 8+)</option> 
+                                <option value="adultSocial">Adult Social League</option> 
+                            </select>
+                        </p>    
+                        <p>
+                            <label for="medicalNotes">Medical Conditions / Allergies (If any):</label><br>
+                            <textarea id="medicalNotes" name="medicalNotes" rows="3" placeholder="Please list any asthma, past injuries, or health considerations our coaches should know about..."></textarea>
+                        </p> 
+                    </fieldset>
+
+                    <p style="margin-bottom: 20px;">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to follow all APU United Football Club safety regulations and bylaws.</label>
+                    </p>
+                    <p>   
+                        <input type="submit" value="Submit Membership Application">
+                    </p>
+
+                </form>
+            </section>
+        </main>
+    </div>
+    <footer>
+    <h3><u>Contact</u></h3>
+
+    <address>
+        <p>
+            <strong>📍 Address:</strong>
+            Jalan Teknologi 5, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur
+        </p>
+
+        <p>
+            <strong>☎️ Phone Number:</strong>
+            <a href="tel:+60389961000">+603-8996 1000</a>
+        </p>
+
+        <p>
+            <strong>✉️ Email:</strong>
+            <a href="mailto:info@apu.edu.my">info@apu.edu.my</a>
+        </p>
+    </address>
+
+    <div>
+        <strong>💼 Front Desk Hours:</strong>
+         Monday–Friday: 9:00 AM–6:00 PM | Saturday: 9:00 AM–1:00 PM</p>
+    </div>
+
+    <p>
+        &copy; 2026 APU United Football Club ⚽. All rights reserved.
+    </p>
+</footer>
+
+</body>
+</html>

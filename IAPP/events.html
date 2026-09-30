@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="icon" type="image/png" href="Image/clubicon.png">
+    <link rel="stylesheet" href="darkmode.css">
+    <link rel="stylesheet" href="events.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    
+    <script src="darkmode.js" defer></script>
+</head>
+<body class="darkMode">
+
+    <header>
+    <div class="club-header">
+        <a href="UnitedClub.html">
+    <img src="Image/clubicon.png" alt="Club Logo" width="80" height="65">
+</a>
+        <img src="Image/clubname.png" alt="Club Name" width="300" height="50">
+    </div>
+    <hr>
+</header>
+
+   <nav>
+    <a href="home.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="rules.html">Rules</a> |
+    <a href="equipment.html">Equipment</a> |
+    <a href="classes.html">Classes</a> |
+
+       <div class="dropdown">
+        <button class="dropbtn">Club Updates</button> |
+        <div class="dropdown-content">
+            <a href="news.html">News</a>
+            <a href="events.html">Events</a> 
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Contact Us</button> |
+        <div class="dropdown-content">
+            <a href="contact.html">Enquiry</a>
+            <a href="feedback.html">Feedback</a> 
+        </div>
+    </div>
+
+       <div class="dropdown">
+        <button class="dropbtn">Games</button> |
+        <div class="dropdown-content">
+            <a href="gameJS.html">Motivation Quotes</a>
+            <a href="gameJS2.html">Quessing Game</a> 
+            <a href="gameJS3.html">Memory Game</a> 
+        </div>
+    </div>
+    
+    <a href="registration.html">Join Us Today!!</a>
+
+    <a href="#" id="themeBtn">🌙Dark Mode</a>
+</nav>
+</head>
+<body>
+
+    <main class="events-section">
+        <h1>Events</h1>
+        <p class="subtitle">Upcoming hospitality events</p>
+        
+        <div class="month-nav">
+            <span class="month-tab active" data-filter="All">All</span>
+            <span class="month-tab" data-filter="Aug">Aug</span>
+            <span class="month-tab" data-filter="Sep">Sep</span>
+            <span class="month-tab" data-filter="Oct">Oct</span>
+            <span class="month-tab" data-filter="Nov">Nov</span>
+            <span class="month-tab" data-filter="Dec">Dec</span>
+            <span class="month-tab" data-filter="Jan">Jan</span>
+            <span class="month-tab" data-filter="Feb">Feb</span>
+            <span class="month-tab" data-filter="Mar">Mar</span>
+            <span class="month-tab" data-filter="Apr">Apr</span>
+            <span class="month-tab" data-filter="May">May</span>
+            <span class="month-tab" data-filter="Jun">Jun</span>
+            <span class="month-tab" data-filter="Jul">Jul</span>
+        </div>
+        <div class="events-grid" id="eventsGrid">
+            <a href="#" class="event-card-link" data-month="Aug">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">25</span>
+                        <span class="month">Aug</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Orientation for newly joined members</h3>
+                        <p class="event-time">7:00 AM - 12:30 PM</p>
+                        <p class="event-desc">Welcoming new club members and getting to know the ropes.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">30</span>
+                        <span class="month">Aug</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Monthly Assessment Test</h3>
+                        <p class="event-time">7:30 AM - 11:30 PM</p>
+                        <p class="event-desc">To track an athlete's physical progress, measure training effectiveness and modify training
+                            for more effectiveness.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="event-card-link" data-month="Sep">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">Sep</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Charity Derby Pre-Match Lounge</h3>
+                        <p class="event-time">04:30 PM - 06:30 PM</p>
+                        <p class="event-desc">Exclusive buffet and guest speaker panel discussion before kickoff.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">30</span>
+                        <span class="month">Sep</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Monthly Assessment Test</h3>
+                        <p class="event-time">7:30 AM - 11:30 PM</p>
+                        <p class="event-desc">To track an athlete's physical progress, measure training effectiveness and modify training
+                            for more effectiveness.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="event-card-link" data-month="Oct">
+                <div class="event-card">
+                <div class="event-date">
+                        <span class="day">24</span>
+                        <span class="month">Oct</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Football Skills Workshop</h3>
+                        <p class="event-time">09:00 AM - 01:00 PM</p>
+                        <p class="event-desc">Improve your techniques with invited professional coaches to enhance your skills.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">30</span>
+                        <span class="month">Oct</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Monthly Assessment Test</h3>
+                        <p class="event-time">7:30 AM - 11:30 PM</p>
+                        <p class="event-desc">To track an athlete's physical progress, measure training effectiveness and modify training
+                            for more effectiveness.</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <div id="noEventsMsg" class="no-events-message" style="display: none;">
+            No events scheduled for this month.
+        </div>
+        <button class="show-all-btn" id="showAllBtn">Show All</button>
+
+    </main>
+    <footer>
+    <h3><u>Contact</u></h3>
+
+    <address>
+        <p>
+            <strong>📍 Address:</strong>
+            Jalan Teknologi 5, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur
+        </p>
+
+        <p>
+            <strong>☎️ Phone Number:</strong>
+            <a href="tel:+60389961000">+603-8996 1000</a>
+        </p>
+
+        <p>
+            <strong>✉️ Email:</strong>
+            <a href="mailto:info@apu.edu.my">info@apu.edu.my</a>
+        </p>
+    </address>
+
+    <div>
+        <strong>💼 Front Desk Hours:</strong>
+         Monday–Friday: 9:00 AM–6:00 PM | Saturday: 9:00 AM–1:00 PM</p>
+    </div>
+
+    <p>
+        &copy; 2026 APU United Football Club ⚽. All rights reserved.
+    </p>
+</footer>
+    <script>
+       document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".month-tab");
+    const eventCards = document.querySelectorAll(".event-card-link");
+    const showAllBtn = document.getElementById("showAllBtn");
+    const seenMonths = new Set();
+
+    function filterSelection(month) {
+        let foundEvents = false;
+
+        tabs.forEach(tab => {
+            if (tab.getAttribute("data-filter") === month) {
+                tab.classList.add("active");
+            } else {
+                tab.classList.remove("active");
+            }
+        });
+
+        eventCards.forEach(card => {
+            const cardMonth = card.getAttribute("data-month");
+
+            if (month === "All" || cardMonth === month) {
+                card.style.display = "block";
+                foundEvents = true;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        
+  if (foundEvents) {
+            noEventsMsg.style.display = "none";
+        } else {
+            noEventsMsg.style.display = "block";
+        }
+    }
+    
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const selectedMonth = tab.getAttribute("data-filter");
+            filterSelection(selectedMonth);
+        });
+    });
+
+    if (showAllBtn) {
+        showAllBtn.addEventListener("click", () => {
+            filterSelection("All");
+        });
+    }
+});
+</script>
+</body>
+</html>

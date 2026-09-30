@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APU United Football Club</title>
+</head>
+<body>
+
+<script>
+function APUUnitedFootballClub() {
+
+    alert("Welcome to APU United Football Club!");
+
+    if (confirm("Do you want to enter the APU United Football Club Website?")){
+        let name = null;
+
+        while (name === null || name.trim() === "") {
+            name = prompt("Please enter your name:");
+
+            if (name === null || name.trim() === "") {
+                alert("Please enter your name to continue.");
+            }
+        }
+
+
+        let gender = null;
+
+        while (gender === null || gender.trim() === "") {
+            gender = prompt("Please enter your gender (M/F):");
+
+            if (gender === null || gender.trim() === "") {
+                alert("Please enter your gender to continue.");
+            }
+        }
+
+
+        if (gender.toUpperCase() == "M") {
+            alert("Welcome to APU United Football Club, Mr. " + name + "!");
+        } else if (gender.toUpperCase() == "F") {
+            alert("Welcome to APU United Football Club, Ms. " + name + "!");
+        } else {
+            alert("Invalid gender entered. Please try again.");
+            return;
+        }
+
+
+        let date = new Date();
+        alert("Current date and time: " + date.toString());
+
+        let hour = date.getHours();
+
+        if (hour < 12) {
+            alert("Good morning! Welcome to APU United Football Club!");
+        } else if (hour >= 12 && hour <= 18) {
+            alert("Good afternoon! Welcome to APU United Football Club!");
+        } else {
+            alert("Good evening! Welcome to APU United Football Club!");
+        }
+        window.location.href = "UnitedClub.html";
+
+    } else {
+        alert("Hope to see you again!");
+        return;
+    }
+}
+    window.onload = function() {
+    APUUnitedFootballClub();
+};
+</script>
+</body>
+</html>

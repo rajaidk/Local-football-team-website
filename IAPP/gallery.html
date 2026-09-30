@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="icon" type="image/png" href="Image/clubicon.png">
+    <link rel="stylesheet" href="darkmode.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    
+    <script src="darkmode.js" defer></script>
+</head>
+<body class="darkMode">
+    <header>
+    <div class="club-header">
+        <a href="UnitedClub.html">
+    <img src="Image/clubicon.png" alt="Club Logo" width="80" height="65">
+</a>
+        <img src="Image/clubname.png" alt="Club Name" width="300" height="50">
+    </div>
+    <hr>
+</header>
+
+   <nav>
+    <a href="home.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="rules.html">Rules</a> |
+    <a href="equipment.html">Equipment</a> |
+    <a href="classes.html">Classes</a> |
+
+       <div class="dropdown">
+        <button class="dropbtn">Club Updates</button> |
+        <div class="dropdown-content">
+            <a href="news.html">News</a>
+            <a href="events.html">Events</a> 
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Contact Us</button> |
+        <div class="dropdown-content">
+            <a href="contact.html">Enquiry</a>
+            <a href="feedback.html">Feedback</a> 
+        </div>
+    </div>
+
+       <div class="dropdown">
+        <button class="dropbtn">Games</button> |
+        <div class="dropdown-content">
+            <a href="gameJS.html">Motivation Quotes</a>
+            <a href="gameJS2.html">Quessing Game</a> 
+            <a href="gameJS3.html">Memory Game</a> 
+        </div>
+    </div>
+    
+    <a href="registration.html">Join Us Today!!</a>
+
+    <a href="#" id="themeBtn">🌙Dark Mode</a>
+</nav>
+
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="Image\APUunitedBG.jpg" alt="APU United Football Club">
+        <div class="text">APU United Football Club</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="Image\FootballTraining.jpg" alt="Football Training">
+        <div class="text">Football Training</div>
+    </div>
+
+
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="Image/JoinOurClub.jpg" alt="Join Our Club">
+        <div class="text">Join Our Club. Erling Haaland and Jude Bellingham are waiting for u ❤️</div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    }
+
+    setInterval(() => {
+        plusSlides(1);
+    }, 4000);
+</script>
+<footer>
+    <h3><u>Contact</u></h3>
+
+    <address>
+        <p>
+            <strong>📍 Address:</strong>
+            Jalan Teknologi 5, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur
+        </p>
+
+        <p>
+            <strong>☎️ Phone Number:</strong>
+            <a href="tel:+60389961000">+603-8996 1000</a>
+        </p>
+
+        <p>
+            <strong>✉️ Email:</strong>
+            <a href="mailto:info@apu.edu.my">info@apu.edu.my</a>
+        </p>
+    </address>
+
+    <div>
+        <strong>💼 Front Desk Hours:</strong>
+         Monday–Friday: 9:00 AM–6:00 PM | Saturday: 9:00 AM–1:00 PM</p>
+    </div>
+    <hr>
+
+    <p>
+        &copy; 2026 APU United Football Club ⚽. All rights reserved.
+    </p>
+</footer>
+</body>
+</html>

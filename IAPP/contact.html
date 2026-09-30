@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry</title>
+    <link rel="icon" type="image/png" href="Image/clubicon.png">
+    <link rel="stylesheet" href="darkmode.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    
+    <script src="darkmode.js" defer></script>
+</head>
+<body class="darkMode">
+
+    <header>
+    <div class="club-header">
+        <a href="UnitedClub.html">
+    <img src="Image/clubicon.png" alt="Club Logo" width="80" height="65">
+</a>
+        <img src="Image/clubname.png" alt="Club Name" width="300" height="50">
+    </div>
+    <hr>
+</header>
+    
+
+   <nav>
+    <a href="home.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="rules.html">Rules</a> |
+    <a href="equipment.html">Equipment</a> |
+    <a href="classes.html">Classes</a> |
+
+       <div class="dropdown">
+        <button class="dropbtn">Club Updates</button> |
+        <div class="dropdown-content">
+            <a href="news.html">News</a>
+            <a href="events.html">Events</a> 
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Contact Us</button> |
+        <div class="dropdown-content">
+            <a href="contact.html">Enquiry</a>
+            <a href="feedback.html">Feedback</a> 
+        </div>
+    </div>
+
+       <div class="dropdown">
+        <button class="dropbtn">Games</button> |
+        <div class="dropdown-content">
+            <a href="gameJS.html">Motivation Quotes</a>
+            <a href="gameJS2.html">Quessing Game</a> 
+            <a href="gameJS3.html">Memory Game</a> 
+        </div>
+    </div>
+    
+    <a href="registration.html">Join Us Today!!</a>
+
+    <a href="#" id="themeBtn">🌙Dark Mode</a>
+</nav>
+
+    <section class="contact">
+
+<div class="contact-form">
+    <form id="contactForm" action="#" method="post">
+
+        <label>Purpose of Inquiry</label>
+        <select id="enquiry" required>
+            <option value="" selected disabled>-- Please Select --</option>
+            <option>General Enquiry</option>
+            <option>Future Collaboration</option>
+            <option>Committees application</option>
+        </select>
+
+        <label>Name</label>
+        <input type="text" id="name" required>
+
+        <label>Email</label>
+        <input type="email" id="email" required>
+
+        <label>Message</label>
+        <textarea id="message" rows="8" required></textarea>
+
+        <p id="errorMessage"></p>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
+      
+        <div class="contact-info">
+            <h4>APU United Football Club</h4>
+
+            <div class="info">
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>
+                        Jalan Teknologi 5,<br>
+                        Taman Teknologi Malaysia,<br>
+                        57000 Kuala Lumpur,<br>
+                        Wilayah Persekutuan Kuala Lumpur, Malaysia
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>info@apu.edu.my</p>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>+603-8996 1000</p>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <p>
+                        Monday-Friday: 9:00AM - 6:00PM<br>
+                        Saturday: 9:00AM - 1:00PM
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+   <script>
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", function(event){
+
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let enquiry = document.getElementById("enquiry").value;
+    let message = document.getElementById("message").value;
+
+
+    // Clear previous errors
+    document.querySelectorAll(".error").forEach(function(error){
+        error.textContent = "";
+    });
+
+
+    let valid = true;
+
+
+    if(enquiry === "")
+    {
+        document.getElementById("enquiryError").textContent = 
+        "Please select an enquiry purpose.";
+        valid = false;
+    }
+
+
+    if(name.trim() === "")
+    {
+        document.getElementById("nameError").textContent = 
+        "Please enter your name.";
+        valid = false;
+    }
+
+
+    if(email.trim() === "")
+    {
+        document.getElementById("emailError").textContent = 
+        "Please enter your email.";
+        valid = false;
+    }
+    else if(!email.includes("@"))
+    {
+        document.getElementById("emailError").textContent = 
+        "Invalid email address.";
+        valid = false;
+    }
+
+
+    if(message.trim() === "")
+    {
+        document.getElementById("messageError").textContent = 
+        "Please enter your message.";
+        valid = false;
+    }
+
+
+    if(valid)
+    {
+        alert("Form submitted successfully!");
+        form.submit();
+    }
+
+});
+</script>
+</body>
+</html>

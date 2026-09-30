@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quessing Game</title>
+    <link rel="icon" type="image/png" href="Image/clubicon.png">
+    <link rel="stylesheet" href="darkmode.css">
+    <link rel="stylesheet" href="gameJS2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    
+    <script src="darkmode.js" defer></script>
+</head>
+<body class="darkMode">
+
+     <header>
+    <div class="club-header">
+        <a href="UnitedClub.html">
+    <img src="Image/clubicon.png" alt="Club Logo" width="80" height="65">
+</a>
+        <img src="Image/clubname.png" alt="Club Name" width="300" height="50">
+    </div>
+    <hr>
+</header>
+
+   <nav>
+    <a href="home.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="rules.html">Rules</a> |
+    <a href="equipment.html">Equipment</a> |
+    <a href="classes.html">Classes</a> |
+
+       <div class="dropdown">
+        <button class="dropbtn">Club Updates</button> |
+        <div class="dropdown-content">
+            <a href="news.html">News</a>
+            <a href="events.html">Events</a> 
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Contact Us</button> |
+        <div class="dropdown-content">
+            <a href="contact.html">Enquiry</a>
+            <a href="feedback.html">Feedback</a> 
+        </div>
+    </div>
+
+       <div class="dropdown">
+        <button class="dropbtn">Games</button> |
+        <div class="dropdown-content">
+            <a href="gameJS.html">Motivation Quotes</a>
+            <a href="gameJS2.html">Quessing Game</a> 
+            <a href="gameJS3.html">Memory Game</a> 
+        </div>
+    </div>
+    
+    <a href="registration.html">Join Us Today!!</a>
+
+    <a href="#" id="themeBtn">🌙Dark Mode</a>
+</nav>
+<body>
+
+<div class="game">
+
+    <h1>Guess the Longest Match Played Record</h1>
+
+    <p>
+        The longest football match played is somewhere between
+        <strong>90 minutes and 120 minutes</strong>.
+    </p>
+
+    <input
+        type="number"
+        id="guess"
+        min="90"
+        max="120"
+        placeholder="90-120">
+
+    <br>
+
+    <button onclick="checkGuess()">Guess</button>
+    <button onclick="restartGame()">Play Again</button>
+
+    <h2 id="message"></h2>
+
+    <p>
+        Attempts:
+        <span id="attempts">0</span>
+    </p>
+</div>
+
+<script>
+    let answer = 117;
+    let attempts = 0;
+
+    function checkGuess() {
+
+        let input = document.getElementById("guess").value;
+
+        if (input === "") {
+            document.getElementById("message").textContent =
+                "Please enter your guess.";
+            return;
+        }
+
+        let guess = Number(input);
+
+        if (guess < 90 || guess > 120) {
+            document.getElementById("message").textContent =
+                "Please enter a number between 90 and 120 minutes.";
+            return;
+        }
+
+        attempts++;
+        document.getElementById("attempts").textContent = attempts;
+
+        if (guess === answer) {
+            document.getElementById("message").textContent =
+                "🎉 Correct! The longest match played is 117 minutes. It was the match of England vs Iran at the 2022 FIFA World Cup.";
+        }
+        else if (guess < answer) {
+            document.getElementById("message").textContent =
+                "⬆ Too short! Guess higher.";
+        }
+        else {
+            document.getElementById("message").textContent =
+                "⬇ Too long! Guess lower.";
+        }
+    }
+
+    function restartGame() {
+   
+        answer = 117;
+        attempts = 0;
+
+        document.getElementById("attempts").textContent = "0";
+        document.getElementById("message").textContent = "";
+        document.getElementById("guess").value = "";
+    }
+</script>
+<footer>
+    <h3><u>Contact</u></h3>
+
+    <address>
+        <p>
+            <strong>📍 Address:</strong>
+            Jalan Teknologi 5, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur
+        </p>
+
+        <p>
+            <strong>☎️ Phone Number:</strong>
+            <a href="tel:+60389961000">+603-8996 1000</a>
+        </p>
+
+        <p>
+            <strong>✉️ Email:</strong>
+            <a href="mailto:info@apu.edu.my">info@apu.edu.my</a>
+        </p>
+    </address>
+
+    <div>
+        <strong>💼 Front Desk Hours:</strong>
+         Monday–Friday: 9:00 AM–6:00 PM | Saturday: 9:00 AM–1:00 PM</p>
+    </div>
+
+    <p>
+        &copy; 2026 APU United Football Club ⚽. All rights reserved.
+    </p>
+</footer>
+</body>
+</html>

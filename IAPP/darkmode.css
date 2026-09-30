@@ -1,0 +1,134 @@
+
+
+body.darkMode{
+    background-color: #222;
+    color: white;
+}
+
+body.darkMode .card{
+    background: #222;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+body.darkMode .card h2,
+body.darkMode .card h3{
+    color: #fca243;
+}
+
+body.darkMode nav {
+    background: #222;
+    color: white;
+}
+
+body.darkMode nav a {
+    color: white;
+}
+
+body.darkMode .dropbtn {
+    background: #222;
+    color: white;
+}
+
+body.darkMode .dropdown-content {
+    background: #333;
+}
+
+body.darkMode .dropdown-content a {
+    color: white;
+}
+
+body.darkMode .dropdown-content a:hover {
+    background: #444;
+}
+
+body.darkMode .contact-info h4,
+body.darkMode .info-item p {
+    color: white;
+}
+
+body.darkMode .info-item i {
+    color: rgb(135, 253, 114);
+}
+
+body.darkMode .sideBoard {
+    background-color: rgb(27, 27, 27);
+    color: white;
+    border: 1px solid #555;
+}
+
+.darkMode .container h2{
+    color: #fca243;
+}
+
+.darkMode .details{
+    color: white;
+}
+
+.darkMode #kickOff,
+.darkMode #whyChoose,
+.darkMode #ourTrainingProgram {
+    color: #fca243;
+}
+
+.darkMode #pitchDashboard,
+.darkMode #upcomingEvents {
+    color: #fca243;
+}
+
+.darkMode .form-container {
+    background-color: #222;
+    color: white;
+    border: 1px solid #555;
+}
+
+.darkMode .registrationDetails {
+    color: white;
+    background-color: #222;
+}
+
+.darkMode .fieldsetTitle {
+    color: #fca243;
+}
+
+.darkMode .events-section .subtitle {
+    color: white;
+}
+
+.darkMode #noEventsMsg{
+    color: white;
+}
+
+
+.darkMode .events-section .show-all-btn {
+    color: white;
+    border: white 1px solid;
+    padding: 15px 30px;
+    cursor: pointer;
+}
+
+.darkMode .main-content .card{
+    box-shadow: none;
+}
+
+.darkMode .story-section{
+    background-color: transparent;
+}
+
+.darkMode .pitch-section{
+    background-color: transparent;
+    color: white;
+}
+
+.darkMode .section-header #programSubtitle{
+    color:white;
+}
+
+.darkMode nav a:hover{
+    color: rgb(0, 159, 0);
+}
+
+.darkMode .rules-container{
+    background-color: transparent;
+    color:white;
+    
+}
+    
