@@ -50,9 +50,17 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 100vh; 
+        min-height: 100vh; 
         display: flex;
         flex-direction: column;
+    }
+
+    .error {
+        color: #d92d20;
+        font-size: 13px;
+        margin-top: 4px;
+        display: block;
+        min-height: 18px;
     }
 
 

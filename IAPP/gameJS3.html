@@ -12,6 +12,7 @@
 
     
     <script src="darkmode.js" defer></script>
+    <script type="module" src="auth-nav.js"></script>
 </head>
 <body class="darkMode">
 
@@ -54,7 +55,7 @@
         <button class="dropbtn">Games</button> |
         <div class="dropdown-content">
             <a href="gameJS.html">Motivation Quotes</a>
-            <a href="gameJS2.html">Quessing Game</a> 
+            <a href="gameJS2.html">Guessing Game</a> 
             <a href="gameJS3.html">Memory Game</a> 
         </div>
     </div>
@@ -68,40 +69,52 @@
     <h2>
         Score: <span id="score">0</span>
         &nbsp;&nbsp;&nbsp;
-        Time: <span id="timer">60</span>
+        Time: <span id="timer">60</span>s
     </h2>
+    <div style="margin: 15px 0;">
+        <button id="restartGameBtn" onclick="initGame()" style="padding: 10px 20px; font-size: 16px; border-radius: 20px; border: none; background: #8bc159; color: white; cursor: pointer; font-weight: bold;">Play Again</button>
+    </div>
     <div id="gameBoard"></div>
     <h2 id="message"></h2>
-    <script src="game.js"></script>
-</body>
-<footer>
-    <h3><u>Contact</u></h3>
 
-    <address>
-        <p>
-            <strong>📍 Address:</strong>
-            Jalan Teknologi 5, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur
-        </p>
-
-        <p>
-            <strong>☎️ Phone Number:</strong>
-            <a href="tel:+60389961000">+603-8996 1000</a>
-        </p>
-
-        <p>
-            <strong>✉️ Email:</strong>
-            <a href="mailto:info@apu.edu.my">info@apu.edu.my</a>
-        </p>
-    </address>
-
-    <div>
-        <strong>💼 Front Desk Hours:</strong>
-         Monday–Friday: 9:00 AM–6:00 PM | Saturday: 9:00 AM–1:00 PM</p>
+    <div id="leaderboardSection" style="max-width: 500px; margin: 30px auto; padding: 20px; background: rgba(255,255,255,0.9); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #111;">
+        <h3 style="margin-bottom: 12px; color: #111e13;">🏆 Memory Match Hall of Fame (Firestore)</h3>
+        <p id="authLeaderboardNote" style="font-size: 13px; color: #666; margin-bottom: 10px;">Sign in with Google to record your scores to the club leaderboard!</p>
+        <ol id="leaderboardList" style="text-align: left; padding-left: 25px; line-height: 1.8; font-weight: 500;">
+            <li>Loading top scores...</li>
+        </ol>
     </div>
 
-    <p>
-        &copy; 2026 APU United Football Club ⚽. All rights reserved.
-    </p>
-</footer>
-</head>
+    <footer>
+        <h3><u>Contact</u></h3>
+
+        <address>
+            <p>
+                <strong>📍 Address:</strong>
+                Jalan Teknologi 5, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur
+            </p>
+
+            <p>
+                <strong>☎️ Phone Number:</strong>
+                <a href="tel:+60389961000">+603-8996 1000</a>
+            </p>
+
+            <p>
+                <strong>✉️ Email:</strong>
+                <a href="mailto:info@apu.edu.my">info@apu.edu.my</a>
+            </p>
+        </address>
+
+        <div>
+            <strong>💼 Front Desk Hours:</strong>
+            Monday–Friday: 9:00 AM–6:00 PM | Saturday: 9:00 AM–1:00 PM
+        </div>
+
+        <p>
+            &copy; 2026 APU United Football Club ⚽. All rights reserved.
+        </p>
+    </footer>
+
+    <script type="module" src="game.js"></script>
+</body>
 </html>

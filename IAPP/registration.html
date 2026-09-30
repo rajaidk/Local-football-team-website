@@ -12,6 +12,7 @@
 
     
     <script src="darkmode.js" defer></script>
+    <script type="module" src="auth-nav.js"></script>
 </head>
 <body class="darkMode">
 
@@ -53,7 +54,7 @@
         <button class="dropbtn">Games</button> |
         <div class="dropdown-content">
             <a href="gameJS.html">Motivation Quotes</a>
-            <a href="gameJS2.html">Quessing Game</a> 
+            <a href="gameJS2.html">Guessing Game</a> 
             <a href="gameJS3.html">Memory Game</a> 
         </div>
     </div>
@@ -62,7 +63,6 @@
 
     <a href="#" id="themeBtn">🌙Dark Mode</a>
 </nav>
-<body>
 
     <div class="container">
         <main class="content"> 
@@ -76,7 +76,11 @@
                 <p>Fill out the details below to apply for club membership. Our team will review your application and contact you within 2 business days.</p>
                 <hr>
                 <br>
-                <form action="#" method="POST" onsubmit="alert('Thanks for registering, we will contact you as soon as possible!');">
+                <div id="authPromptBanner" style="display: none; background: #fff3cd; color: #856404; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ffeeba;">
+                    ℹ️ <strong>Please sign in with Google</strong> (at the top-right in the navigation bar) to submit and track your membership application.
+                </div>
+
+                <form id="membershipForm" action="#" method="POST">
                     
                     <fieldset class="registrationDetails"> 
                         <legend class="fieldsetTitle">Personal Details</legend>
@@ -142,10 +146,15 @@
                         <label for="terms">I agree to follow all APU United Football Club safety regulations and bylaws.</label>
                     </p>
                     <p>   
-                        <input type="submit" value="Submit Membership Application">
+                        <input type="submit" id="submitRegBtn" value="Submit Membership Application">
                     </p>
 
                 </form>
+
+                <div id="myApplicationsContainer" style="margin-top: 30px; display: none;">
+                    <h3>Your Submitted Applications</h3>
+                    <div id="applicationsList" style="margin-top: 10px;"></div>
+                </div>
             </section>
         </main>
     </div>
@@ -178,6 +187,105 @@
         &copy; 2026 APU United Football Club ⚽. All rights reserved.
     </p>
 </footer>
+
+<script type="module">
+import { auth, submitApplication, getUserApplications, loginWithGoogle } from './firebase-service.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js';
+
+const form = document.getElementById('membershipForm');
+const banner = document.getElementById('authPromptBanner');
+const myAppsContainer = document.getElementById('myApplicationsContainer');
+const appsList = document.getElementById('applicationsList');
+const submitBtn = document.getElementById('submitRegBtn');
+
+async function loadUserApps(user) {
+    if (!user) {
+        myAppsContainer.style.display = 'none';
+        return;
+    }
+
+    try {
+        const apps = await getUserApplications();
+        if (apps && apps.length > 0) {
+            myAppsContainer.style.display = 'block';
+            appsList.innerHTML = apps.map(app => `
+                <div style="background: rgba(139, 193, 89, 0.15); border-left: 4px solid #8bc159; padding: 12px; margin-bottom: 10px; border-radius: 4px;">
+                    <strong>${app.fullName}</strong> — <em>Status: ${app.status.toUpperCase()}</em><br>
+                    <small>Program: ${app.trainingGoal || 'Club Member'} | Submitted: ${new Date(app.createdAt).toLocaleDateString()}</small>
+                </div>
+            `).join('');
+        } else {
+            myAppsContainer.style.display = 'none';
+        }
+    } catch (err) {
+        console.error('Failed to load applications:', err);
+    }
+}
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        banner.style.display = 'none';
+        const emailInput = document.getElementById('email');
+        if (emailInput && !emailInput.value) {
+            emailInput.value = user.email || '';
+        }
+        const nameInput = document.getElementById('fullName');
+        if (nameInput && !nameInput.value && user.displayName) {
+            nameInput.value = user.displayName;
+        }
+        loadUserApps(user);
+    } else {
+        banner.style.display = 'block';
+        myAppsContainer.style.display = 'none';
+    }
+});
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!auth.currentUser) {
+        const doLogin = confirm('You need to be signed in with Google to submit and save your registration. Would you like to sign in now?');
+        if (doLogin) {
+            try {
+                await loginWithGoogle();
+            } catch (err) {
+                return;
+            }
+        } else {
+            return;
+        }
+    }
+
+    const genderEl = document.querySelector('input[name="gender"]:checked');
+
+    const appData = {
+        fullName: document.getElementById('fullName').value.trim(),
+        dob: document.getElementById('dob').value,
+        gender: genderEl ? genderEl.value : 'unspecified',
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('emergencyContact').value.trim(),
+        experience: document.getElementById('footballLevel').value,
+        trainingGoal: document.getElementById('programInterest').value,
+        preferredPosition: '',
+        medicalNotes: document.getElementById('medicalNotes').value.trim()
+    };
+
+    try {
+        submitBtn.disabled = true;
+        submitBtn.value = 'Saving to Firestore...';
+        await submitApplication(appData);
+        alert('🎉 Membership application submitted successfully and saved to your account!');
+        form.reset();
+        await loadUserApps(auth.currentUser);
+    } catch (error) {
+        console.error(error);
+        alert('Submission error: ' + error.message);
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.value = 'Submit Membership Application';
+    }
+});
+</script>
 
 </body>
 </html>

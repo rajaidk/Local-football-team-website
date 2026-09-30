@@ -12,6 +12,7 @@
 
     
     <script src="darkmode.js" defer></script>
+    <script type="module" src="auth-nav.js"></script>
 </head>
 <body class="darkMode">
 
@@ -54,7 +55,7 @@
         <button class="dropbtn">Games</button> |
         <div class="dropdown-content">
             <a href="gameJS.html">Motivation Quotes</a>
-            <a href="gameJS2.html">Quessing Game</a> 
+            <a href="gameJS2.html">Guessing Game</a> 
             <a href="gameJS3.html">Memory Game</a> 
         </div>
     </div>
@@ -69,24 +70,28 @@
 <div class="contact-form">
     <form id="contactForm" action="#" method="post">
 
-        <label>Purpose of Inquiry</label>
+        <label for="enquiry">Purpose of Inquiry</label>
         <select id="enquiry" required>
             <option value="" selected disabled>-- Please Select --</option>
             <option>General Enquiry</option>
             <option>Future Collaboration</option>
             <option>Committees application</option>
         </select>
+        <span id="enquiryError" class="error"></span>
 
-        <label>Name</label>
+        <label for="name">Name</label>
         <input type="text" id="name" required>
+        <span id="nameError" class="error"></span>
 
-        <label>Email</label>
+        <label for="email">Email</label>
         <input type="email" id="email" required>
+        <span id="emailError" class="error"></span>
 
-        <label>Message</label>
+        <label for="message">Message</label>
         <textarea id="message" rows="8" required></textarea>
+        <span id="messageError" class="error"></span>
 
-        <p id="errorMessage"></p>
+        <p id="errorMessage" class="error"></p>
 
         <button type="submit">Submit</button>
 
@@ -129,26 +134,66 @@
         </div>
 
     </section>
-   <script>
+
+    <footer>
+        <h3><u>Contact</u></h3>
+
+        <address>
+            <p>
+                <strong>📍 Address:</strong>
+                Jalan Teknologi 5, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur
+            </p>
+
+            <p>
+                <strong>☎️ Phone Number:</strong>
+                <a href="tel:+60389961000">+603-8996 1000</a>
+            </p>
+
+            <p>
+                <strong>✉️ Email:</strong>
+                <a href="mailto:info@apu.edu.my">info@apu.edu.my</a>
+            </p>
+        </address>
+
+        <div>
+            <strong>💼 Front Desk Hours:</strong>
+            Monday–Friday: 9:00 AM–6:00 PM | Saturday: 9:00 AM–1:00 PM
+        </div>
+
+        <p>
+            &copy; 2026 APU United Football Club ⚽. All rights reserved.
+        </p>
+    </footer>
+
+   <script type="module">
+import { auth, submitEnquiry, loginWithGoogle } from './firebase-service.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js';
+
 const form = document.getElementById("contactForm");
 
-form.addEventListener("submit", function(event){
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        if (nameInput && !nameInput.value && user.displayName) nameInput.value = user.displayName;
+        if (emailInput && !emailInput.value && user.email) emailInput.value = user.email;
+    }
+});
 
+form.addEventListener("submit", async function(event){
+    event.preventDefault();
 
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let enquiry = document.getElementById("enquiry").value;
     let message = document.getElementById("message").value;
 
-
     // Clear previous errors
     document.querySelectorAll(".error").forEach(function(error){
         error.textContent = "";
     });
 
-
     let valid = true;
-
 
     if(enquiry === "")
     {
@@ -157,14 +202,12 @@ form.addEventListener("submit", function(event){
         valid = false;
     }
 
-
     if(name.trim() === "")
     {
         document.getElementById("nameError").textContent = 
         "Please enter your name.";
         valid = false;
     }
-
 
     if(email.trim() === "")
     {
@@ -179,7 +222,6 @@ form.addEventListener("submit", function(event){
         valid = false;
     }
 
-
     if(message.trim() === "")
     {
         document.getElementById("messageError").textContent = 
@@ -187,13 +229,47 @@ form.addEventListener("submit", function(event){
         valid = false;
     }
 
+    if (!valid) return;
 
-    if(valid)
-    {
-        alert("Form submitted successfully!");
-        form.submit();
+    if (!auth.currentUser) {
+        const doLogin = confirm("To save and track your enquiry securely with your account, please sign in with Google. Would you like to sign in now?");
+        if (doLogin) {
+            try {
+                await loginWithGoogle();
+            } catch (err) {
+                return;
+            }
+        } else {
+            return;
+        }
     }
 
+    try {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+        }
+
+        await submitEnquiry({
+            purpose: enquiry,
+            name: name.trim(),
+            email: email.trim(),
+            message: message.trim()
+        });
+
+        alert("Enquiry submitted successfully and saved to our database! Our team will contact you shortly.");
+        form.reset();
+    } catch (err) {
+        console.error(err);
+        alert("Failed to submit enquiry: " + err.message);
+    } finally {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit";
+        }
+    }
 });
 </script>
 </body>

@@ -131,4 +131,89 @@ body.darkMode .sideBoard {
     color:white;
     
 }
-    
+
+/* Firebase Auth Navbar Styles */
+.nav-auth-container {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.auth-divider {
+    color: #888;
+    margin-right: 8px;
+}
+
+.auth-btn {
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.signin-btn {
+    background-color: #ffffff;
+    color: #3c4043;
+    border: 1px solid #dadce0;
+    box-shadow: 0 1px 2px rgba(60,64,67,0.15);
+}
+
+.signin-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #c1c3c7;
+}
+
+.signout-btn {
+    background-color: #e02424;
+    color: #ffffff;
+    margin-left: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+}
+
+.signout-btn:hover {
+    background-color: #bc1a1a;
+}
+
+.user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(139, 193, 89, 0.15);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(139, 193, 89, 0.4);
+}
+
+.user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111e13;
+}
+
+body.darkMode .user-name {
+    color: #87fd72;
+}
+
+body.darkMode .signin-btn {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+body.darkMode .signin-btn:hover {
+    background-color: #444444;
+}

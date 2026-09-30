@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="darkmode.js" defer></script>
+    <script type="module" src="auth-nav.js"></script>
 </head>
 <body class="darkMode">
 
@@ -51,7 +52,7 @@
             <button class="dropbtn">Games</button> |
             <div class="dropdown-content">
                 <a href="gameJS.html">Motivation Quotes</a>
-                <a href="gameJS2.html">Quessing Game</a> 
+                <a href="gameJS2.html">Guessing Game</a> 
                 <a href="gameJS3.html">Memory Game</a> 
             </div>
         </div>
@@ -62,9 +63,15 @@
     </nav>
 
     <section class="hero">
-        <h1>Welcome to APU United Football Club</h1>
-        <p>Lace up for fitness, teamwork, and football excellence.</p>
-        <a href="contact.html" class="btn">Join Today</a>
+        <h1 id="heroTitle">Welcome to APU United Football Club</h1>
+        <p id="heroSubtitle">Lace up for fitness, teamwork, and football excellence.</p>
+        <div id="memberDashboardBanner" style="display: none; background: rgba(139, 193, 89, 0.2); border: 1px solid #8bc159; border-radius: 8px; padding: 12px 18px; margin: 15px auto; max-width: 600px;">
+            <span>⚽ Welcome back, <strong id="memberWelcomeName">Member</strong>!</span>
+            <div style="margin-top: 6px;">
+                <a href="registration.html" style="font-size: 14px; color: #2e6616; font-weight: bold; text-decoration: underline;">View / Submit Membership Application &rarr;</a>
+            </div>
+        </div>
+        <a href="registration.html" class="btn">Join Today</a>
     </section>
     
     <main class="home-layout">
@@ -157,5 +164,19 @@
             &copy; 2026 APU United Football Club ⚽. All rights reserved.
         </p>
     </footer>
+
+    <script type="module">
+        window.addEventListener('clubUserAuthChanged', (e) => {
+            const user = e.detail?.user;
+            const banner = document.getElementById('memberDashboardBanner');
+            const nameEl = document.getElementById('memberWelcomeName');
+            if (user) {
+                if (banner) banner.style.display = 'block';
+                if (nameEl) nameEl.textContent = user.displayName || user.email.split('@')[0];
+            } else {
+                if (banner) banner.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

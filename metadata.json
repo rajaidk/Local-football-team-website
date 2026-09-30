@@ -1,0 +1,7 @@
+{
+  "name": "APU United Football Club",
+  "description": "Official website for APU United Football Club featuring team information, classes, equipment, events, news, and football games.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
